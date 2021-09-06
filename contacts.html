@@ -17,6 +17,8 @@
       </header>
             
       <main>
+
+        <!-- Search bar -->
         <div class="card col-md-8 mx-auto mb-5 p-3">
           <form>
             <div class="row">
@@ -31,6 +33,44 @@
           
           </form>
         </div>
+
+        <!-- Add contact -->
+        <div class="col-md-8 mx-auto p-3 border-top">
+          <button type="button" class="btn btn-outline-primary">Add contact</button>
+        </div>
+
+        <!-- <div class="col-md-8 mx-auto mb-5 p-3 border-top border-bottom">
+          <div class="d-flex justify-content-between">
+            <h5>New contact</h5>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+              <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+            </svg>
+          </div>  
+        </div> -->
+
+
+        <!-- contacts list -->
+        <div class="list-group col-md-8 mx-auto">
+
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Placeholder Name</h5>
+              
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-bs-toggle="collapse" data-bs-target="#collapseExample"> -->
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-bs-toggle="modal" data-bs-target="#editModal">
+                <label class="btn btn-outline-primary" for="btnradio1">Edit</label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                <label class="btn btn-outline-primary" for="btnradio2">Delete</label>
+              </div>
+            </div>
+            <p class="mb-1">123-456-7890</p>
+            <p class="mb-1">placeholder@email.com</p>
+          </div>
+    
+        </div>
+
         
         <!-- Delete confirmation modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -186,28 +226,6 @@
 
 
         
-        <!-- contacts list -->
-        <div class="list-group col-md-8 mx-auto">
-
-          <div class="list-group-item">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Placeholder Name</h5>
-              
-              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-bs-toggle="collapse" data-bs-target="#collapseExample"> -->
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-bs-toggle="modal" data-bs-target="#editModal">
-                <label class="btn btn-outline-primary" for="btnradio1">Edit</label>
-              
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                <label class="btn btn-outline-primary" for="btnradio2">Delete</label>
-              </div>
-            </div>
-            <p class="mb-1">123-456-7890</p>
-            <p class="mb-1">placeholder@email.com</p>
-          </div>
-    
-
-        </div>
       </main>
     </div>
   
