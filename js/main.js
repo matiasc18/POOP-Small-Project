@@ -11,16 +11,15 @@ var lastName = "";
 function doLogin()
 {
 	userId = 0;
-	firstName = "Test";
-	lastName = "Data";
-
-  
-  console.log("Hello World!");
-  console.log(firstName, lastName);
+	firstName = "";
+	lastName = "";
 	
-// 	var login = document.getElementById("loginName").value;
-// 	var password = document.getElementById("loginPassword").value;
-// //	var hash = md5( password );
+	var login = document.getElementById("loginName").value;
+	var password = document.getElementById("loginPassword").value;
+//	var hash = md5( password );
+
+  console.log("Hello World!");
+  console.log(login, password);
 	
 // 	document.getElementById("loginResult").innerHTML = "";
 
@@ -64,6 +63,63 @@ function doLogin()
 // 	}
 
 }
+
+function doSignup()
+{
+	userId = 0;
+	firstName = "";
+	lastName = "";
+	
+	var login = document.getElementById("loginName").value;
+	var password = document.getElementById("loginPassword").value;
+//	var hash = md5( password );
+
+  console.log("Hello World!");
+  console.log(login, password);
+	
+// 	document.getElementById("loginResult").innerHTML = "";
+
+// 	var tmp = {login:login,password:password};
+// //	var tmp = {login:login,password:hash};
+// 	var jsonPayload = JSON.stringify( tmp );
+	
+// 	var url = urlBase + '/Login.' + extension;
+
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.open("POST", url, true);
+// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+// 	try
+// 	{
+// 		xhr.onreadystatechange = function() 
+// 		{
+// 			if (this.readyState == 4 && this.status == 200) 
+// 			{
+// 				var jsonObject = JSON.parse( xhr.responseText );
+// 				userId = jsonObject.id;
+		
+// 				if( userId < 1 )
+// 				{		
+// 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+// 					return;
+// 				}
+		
+// 				firstName = jsonObject.firstName;
+// 				lastName = jsonObject.lastName;
+
+// 				saveCookie();
+	
+// 				window.location.href = "color.html";
+// 			}
+// 		};
+// 		xhr.send(jsonPayload);
+// 	}
+// 	catch(err)
+// 	{
+// 		document.getElementById("loginResult").innerHTML = err.message;
+// 	}
+
+}
+
 
 // function saveCookie()
 // {
@@ -115,36 +171,49 @@ function doLogin()
 // 	window.location.href = "index.html";
 // }
 
-// function addColor()
-// {
-// 	var newColor = document.getElementById("colorText").value;
-// 	document.getElementById("colorAddResult").innerHTML = "";
+function addContact()
+{
+	var newFirstname = document.getElementById("addFirstname").value;
+	var newLastname = document.getElementById("addLastname").value;
+	var newEmail = document.getElementById("addEmail").value;
+	var newPhone = document.getElementById("addPhone").value;
 
-// 	var tmp = {color:newColor,userId,userId};
-// 	var jsonPayload = JSON.stringify( tmp );
+	// document.getElementById("colorAddResult").innerHTML = "";
+  
+	var tmp = { // TODO: Edit for API
+    fname: newFirstname,
+    lname: newLastname,
+    email: newEmail,
+    phone: newPhone
+  };
 
-// 	var url = urlBase + '/AddColor.' + extension;
+	var jsonPayload = JSON.stringify( tmp );
+
+  console.log(tmp);
+  console.log("Hello world!");
+
+	// var url = urlBase + '/AddColor.' + extension; TODO: Edit later
 	
-// 	var xhr = new XMLHttpRequest();
-// 	xhr.open("POST", url, true);
-// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-// 	try
-// 	{
-// 		xhr.onreadystatechange = function() 
-// 		{
-// 			if (this.readyState == 4 && this.status == 200) 
-// 			{
-// 				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-// 			}
-// 		};
-// 		xhr.send(jsonPayload);
-// 	}
-// 	catch(err)
-// 	{
-// 		document.getElementById("colorAddResult").innerHTML = err.message;
-// 	}
+	// var xhr = new XMLHttpRequest();
+	// xhr.open("POST", url, true);
+	// xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	// try
+	// {
+	// 	xhr.onreadystatechange = function() 
+	// 	{
+	// 		if (this.readyState == 4 && this.status == 200) 
+	// 		{
+	// 			document.getElementById("colorAddResult").innerHTML = "Color has been added";
+	// 		}
+	// 	};
+	// 	xhr.send(jsonPayload);
+	// }
+	// catch(err)
+	// {
+	// 	document.getElementById("colorAddResult").innerHTML = err.message;
+	// }
 	
-// }
+}
 
 // function searchColor()
 // {
