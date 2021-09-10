@@ -7,7 +7,8 @@
 	$firstName = "";
 	$lastName = "";
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 
+	// fix the mysql with our database username, password, and database name
 	if( $conn->connect_error )
 	{
 		returnWithError( $conn->connect_error );
