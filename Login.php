@@ -9,7 +9,7 @@
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 
 	// fix the mysql with our database username, password, and database name
-	// which might be ("localhost", "Main","User","TheBeast","WeLoveCOP4331");
+	// which might be ("localhost", "Main","User","TheBeast","WeLoveCOP4331", "COP4331");
 	if( $conn->connect_error )
 	{
 		returnWithError( $conn->connect_error );
