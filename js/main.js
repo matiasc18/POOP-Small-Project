@@ -14,11 +14,10 @@ function doLogin()
 	firstName = "";
 	lastName = "";
 	
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
+	var login = document.getElementById("login-name").value;
+	var password = document.getElementById("login-password").value;
 //	var hash = md5( password );
 
-  console.log("Hello World!");
   console.log(login, password);
 	
 // 	document.getElementById("loginResult").innerHTML = "";
@@ -70,11 +69,10 @@ function doSignup()
 	firstName = "";
 	lastName = "";
 	
-	var login = document.getElementById("loginName").value;
-	var password = document.getElementById("loginPassword").value;
+	var login = document.getElementById("login-name").value;
+	var password = document.getElementById("login-password").value;
 //	var hash = md5( password );
 
-  console.log("Hello World!");
   console.log(login, password);
 	
 // 	document.getElementById("loginResult").innerHTML = "";
@@ -173,10 +171,10 @@ function doSignup()
 
 function addContact()
 {
-	var newFirstname = document.getElementById("addFirstname").value;
-	var newLastname = document.getElementById("addLastname").value;
-	var newEmail = document.getElementById("addEmail").value;
-	var newPhone = document.getElementById("addPhone").value;
+	var newFirstname = document.getElementById("add-firstname").value;
+	var newLastname = document.getElementById("add-lastname").value;
+	var newEmail = document.getElementById("add-email").value;
+	var newPhone = document.getElementById("add-phone").value;
 
 	// document.getElementById("colorAddResult").innerHTML = "";
   
@@ -190,7 +188,73 @@ function addContact()
 	var jsonPayload = JSON.stringify( tmp );
 
   console.log(tmp);
-  console.log("Hello world!");
+
+  // Add contact HTML
+  // TODO: put this after successful api call
+  document.getElementById('contact-list').innerHTML += '<div class="list-group-item">\n' +
+  '<div class="d-flex w-100 justify-content-between">\n' +
+    '<h5 class="mb-1">' + newFirstname + ' ' + newLastname +'</h5>\n' +
+    '<div class="btn-group" role="group" aria-label="Basic radio toggle button group">\n' +
+      '<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-bs-toggle="modal" data-bs-target="#edit-modal">\n' +
+      '<label class="btn btn-outline-primary" for="btnradio1">Edit</label>\n' +
+      '<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-bs-toggle="modal" data-bs-target="#delete-modal">\n' +
+      '<label class="btn btn-outline-primary" for="btnradio2">Delete</label>\n' +
+    '</div>\n' +
+  '</div>\n' +
+  '<p class="mb-1">' + newPhone + '</p>\n' +
+  '<p class="mb-1">' + newEmail + '</p>\n' +
+  '</div>\n'
+	// var url = urlBase + '/AddColor.' + extension; TODO: Edit later
+	
+	// var xhr = new XMLHttpRequest();
+	// xhr.open("POST", url, true);
+	// xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	// try
+	// {
+	// 	xhr.onreadystatechange = function() 
+	// 	{
+	// 		if (this.readyState == 4 && this.status == 200) 
+	// 		{
+	// 			document.getElementById("colorAddResult").innerHTML = "Color has been added";
+	// 		}
+	// 	};
+	// 	xhr.send(jsonPayload);
+	// }
+	// catch(err)
+	// {
+	// 	document.getElementById("colorAddResult").innerHTML = err.message;
+	// }
+	
+}
+
+function editPopup() {
+  var newFirstname = document.getElementById("edit-firstname").value;
+	var newLastname = document.getElementById("edit-lastname").value;
+	var newEmail = document.getElementById("edit-email").value;
+	var newPhone = document.getElementById("edit-phone").value;
+}
+
+function editContact()
+{
+  var id = 99;
+	var newFirstname = document.getElementById("edit-firstname").value;
+	var newLastname = document.getElementById("edit-lastname").value;
+	var newEmail = document.getElementById("edit-email").value;
+	var newPhone = document.getElementById("edit-phone").value;
+
+	// document.getElementById("colorAddResult").innerHTML = "";
+  
+	var tmp = { // TODO: Edit for API
+    id: id,
+    fname: newFirstname,
+    lname: newLastname,
+    email: newEmail,
+    phone: newPhone
+  };
+
+	var jsonPayload = JSON.stringify( tmp );
+
+  console.log(tmp);
 
 	// var url = urlBase + '/AddColor.' + extension; TODO: Edit later
 	

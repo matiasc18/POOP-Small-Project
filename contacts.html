@@ -54,36 +54,38 @@
 
 
       <!-- contacts list -->
-      <div class="list-group col-md-8 mx-auto">
-
+      <div id="contact-list" class="list-group col-md-8 mx-auto">
+   
+        <!-- ----sample HTML for a contact----- -->
+        <!-- should be deleted or commented out -->
         <div class="list-group-item">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">Placeholder Name</h5>
+            <h5 id="contact-name" class="mb-1" data-firstname="Placeholder" data-lastname="Name">Placeholder Name</h5>
 
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-bs-toggle="collapse" data-bs-target="#collapseExample"> -->
               <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
-                data-bs-toggle="modal" data-bs-target="#editModal">
+                data-bs-toggle="modal" data-bs-target="#edit-modal">
               <label class="btn btn-outline-primary" for="btnradio1">Edit</label>
 
               <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
-                data-bs-toggle="modal" data-bs-target="#deleteModal">
+                data-bs-toggle="modal" data-bs-target="#delete-modal">
               <label class="btn btn-outline-primary" for="btnradio2">Delete</label>
             </div>
           </div>
-          <p class="mb-1">123-456-7890</p>
-          <p class="mb-1">placeholder@email.com</p>
+          <p id="contact-phone" class="mb-1">123-456-7890</p>
+          <p id="contact-email" class="mb-1">placeholder@email.com</p>
         </div>
+        <!-- end sample -->
 
       </div>
 
 
       <!-- Delete confirmation modal -->
-      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+              <h5 class="modal-title" id="delete-modal-label">Confirm Deletion</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -98,32 +100,32 @@
       </div>
 
       <!-- Edit modal -->
-      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addModalLabel">Edit contact info</h5>
+              <h5 class="modal-title" id="add-modal-label">Edit contact info</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form>
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="editFirstname" placeholder="First name">
+                  <input type="email" class="form-control" id="edit-firstname" placeholder="First name">
                   <label for="Firstname">First name</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="editLastname" placeholder="Last name">
+                  <input type="email" class="form-control" id="edit-lastname" placeholder="Last name">
                   <label for="Lastname">Last name</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="editEmail" placeholder="Email">
+                  <input type="email" class="form-control" id="edit-email" placeholder="Email">
                   <label for="Email">Email</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="editPhone" placeholder="Phone">
+                  <input type="email" class="form-control" id="edit-phone" placeholder="Phone">
                   <label for="Phone">Phone</label>
                 </div>
 
@@ -148,22 +150,22 @@
             <div class="modal-body">
               <form>
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="addFirstname" placeholder="First name">
-                  <label for="Firstname">add First name</label>
+                  <input type="text" class="form-control" id="add-firstname" placeholder="First name">
+                  <label for="Firstname">First name</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="addLastname" placeholder="Last name">
+                  <input type="text" class="form-control" id="add-lastname" placeholder="Last name">
                   <label for="Lastname">Last name</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="addEmail" placeholder="Email">
+                  <input type="email" class="form-control" id="add-email" placeholder="Email">
                   <label for="Email">Email</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="addPhone" placeholder="Phone">
+                  <input type="text" class="form-control" id="add-phone" placeholder="Phone">
                   <label for="Phone">Phone</label>
                 </div>
 
@@ -171,7 +173,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" onclick="addContact();">Submit</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addContact();">Submit</button>
             </div>
           </div>
         </div>
@@ -183,50 +185,27 @@
           <form>
             <h5 class="mb-3">Edit Contact</h5>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="Firstname" placeholder="First name">
+              <input type="email" class="form-control" id="edit-firstname" placeholder="First name">
               <label for="Firstname">First name</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="Lastname" placeholder="Last name">
+              <input type="email" class="form-control" id="edit-lastname" placeholder="Last name">
               <label for="Lastname">Last name</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="Email" placeholder="Email">
+              <input type="email" class="form-control" id="edit-email" placeholder="Email">
               <label for="Email">Email</label>
             </div>
 
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="Phone" placeholder="Phone">
+              <input type="email" class="form-control" id="edit-phone" placeholder="Phone">
               <label for="Phone">Phone</label>
             </div>
-            <!-- <div class="mb-3">
-                  <label for="Firstname" class="form-label">First name</label>
-                  <input type="email" class="form-control" id="Firstname">
-                </div>              
-
-                <div class="mb-3">
-                  <label for="Lastname" class="form-label">Last name</label>
-                  <input type="email" class="form-control" id="Lastname">
-                </div>              
-
-                <div class="mb-3">
-                  <label for="Email" class="form-label">email</label>
-                  <input type="email" class="form-control" id="Email">
-                </div>              
-
-                <div class="mb-3">
-                  <label for="Phone" class="form-label">Phone</label>
-                  <input type="email" class="form-control" id="Phone">
-                </div>               -->
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="editContact()">Submit</button>
             <button type="Close" class="btn btn-secondary" data-bs-toggle="collapse"
               data-bs-target="#collapseExample">close</button>
-
-
-
           </form>
         </div>
       </div>
