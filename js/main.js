@@ -8,6 +8,35 @@ var userId = 0;
 var firstName = "";
 var lastName = "";
 
+var idForDeletion = -1;
+
+// document.querySelector('.delete-contact').addEventListener('click', deleteSelect);
+
+
+// contact element to be inserted, as a string
+function contactElement(id, fName, lName, email, phone) {
+  
+  contact = '<div id="' + id + '" class="contact-item list-group-item" ' + 
+    'data-id="' + id + '" ' + 
+    'data-firstname="' + fName + '" ' +
+    'data-lastname="' + lName + '" ' +
+    'data-email="' + email + '" ' +
+    'data-phone="' + phone + '">\n' +
+  '<div class="d-flex w-100 justify-content-between">\n' +
+  '<h5 class="mb-1">' + fName + ' ' + lName +'</h5>\n' +
+  '<div class="btn-group" role="group" aria-label="button group">\n' +
+  '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>\n' +
+  '<button type="button" class="delete-contact btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#delete-modal"' +
+    'onclick="deleteSelect(' + id + ');">Delete</label>\n' +
+  '</div>\n' +
+  '</div>\n' +
+  '<p class="contact-phone mb-1">' + phone + '</p>\n' +
+  '<p class="contact-email mb-1">' + email + '</p>\n' +
+  '</div>\n'
+
+  return contact;
+}
+
 function doLogin()
 {
 	userId = 0;
@@ -189,21 +218,13 @@ function addContact()
 
   console.log(tmp);
 
-  // Add contact HTML
-  // TODO: put this after successful api call
-  document.getElementById('contact-list').innerHTML += '<div class="list-group-item">\n' +
-  '<div class="d-flex w-100 justify-content-between">\n' +
-    '<h5 class="mb-1">' + newFirstname + ' ' + newLastname +'</h5>\n' +
-    '<div class="btn-group" role="group" aria-label="Basic radio toggle button group">\n' +
-      '<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" data-bs-toggle="modal" data-bs-target="#edit-modal">\n' +
-      '<label class="btn btn-outline-primary" for="btnradio1">Edit</label>\n' +
-      '<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" data-bs-toggle="modal" data-bs-target="#delete-modal">\n' +
-      '<label class="btn btn-outline-primary" for="btnradio2">Delete</label>\n' +
-    '</div>\n' +
-  '</div>\n' +
-  '<p class="mb-1">' + newPhone + '</p>\n' +
-  '<p class="mb-1">' + newEmail + '</p>\n' +
-  '</div>\n'
+  // Add contact HTML. New contacts are added above existing ones
+  // TODO: put this after successful API call
+  document.getElementById('contact-list').innerHTML = 
+    contactElement(99, newFirstname, newLastname, newEmail, newPhone) +
+    document.getElementById('contact-list').innerHTML;
+
+  document.getElementById("add-form").reset();
 	// var url = urlBase + '/AddColor.' + extension; TODO: Edit later
 	
 	// var xhr = new XMLHttpRequest();
@@ -227,11 +248,10 @@ function addContact()
 	
 }
 
+// TODO: Do if there's time left
+// Inserts contact info to be edited into the edit modal
 function editPopup() {
-  var newFirstname = document.getElementById("edit-firstname").value;
-	var newLastname = document.getElementById("edit-lastname").value;
-	var newEmail = document.getElementById("edit-email").value;
-	var newPhone = document.getElementById("edit-phone").value;
+
 }
 
 function editContact()
@@ -277,6 +297,23 @@ function editContact()
 	// 	document.getElementById("colorAddResult").innerHTML = err.message;
 	// }
 	
+}
+
+// Selects the contact to be deleted by id
+function deleteSelect(id) {
+  console.log(id);
+  idForDeletion = id;
+}
+
+function doDelete() {
+
+  // Hides the deleted element
+  // This should go after the api call confirms deletion from the server
+  document.getElementById(idForDeletion).className = "d-none";
+
+
+
+  // api call goes here:
 }
 
 // function searchColor()
