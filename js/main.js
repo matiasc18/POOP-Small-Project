@@ -25,9 +25,10 @@ function contactElement(id, fName, lName, email, phone) {
   '<div class="d-flex w-100 justify-content-between">\n' +
   '<h5 class="mb-1">' + fName + ' ' + lName +'</h5>\n' +
   '<div class="btn-group" role="group" aria-label="button group">\n' +
-  '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit-modal">Edit</button>\n' +
+  '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit-modal"' +
+    'onclick="selectForEdit(' + id + ')">Edit</button>\n' +
   '<button type="button" class="delete-contact btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#delete-modal"' +
-    'onclick="deleteSelect(' + id + ');">Delete</label>\n' +
+    'onclick="selectForDelete(' + id + ');">Delete</button>\n' +
   '</div>\n' +
   '</div>\n' +
   '<p class="contact-phone mb-1">' + phone + '</p>\n' +
@@ -250,8 +251,17 @@ function addContact()
 
 // TODO: Do if there's time left
 // Inserts contact info to be edited into the edit modal
-function editPopup() {
+function selectForEdit(id) {
+  var el = document.getElementById(id);
+  var fName = el.getAttribute("data-firstname");
+  var lName = el.getAttribute("data-lastname");
+  var email = el.getAttribute("data-email");
+  var phone = el.getAttribute("data-phone");
 
+  document.getElementById("edit-firstname").value = fName;
+	document.getElementById("edit-lastname").value = lName;
+	document.getElementById("edit-email").value = email;
+	document.getElementById("edit-phone").value = phone;
 }
 
 function editContact()
@@ -300,7 +310,7 @@ function editContact()
 }
 
 // Selects the contact to be deleted by id
-function deleteSelect(id) {
+function selectForDelete(id) {
   console.log(id);
   idForDeletion = id;
 }
