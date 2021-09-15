@@ -7,6 +7,7 @@
     $phoneNumber = $inData["Phone"];
     $email = $inData["Email"];
     // work on having the date added (do we want the user to enter or automatically enter it)
+    // check to see if I have to initialize first
 
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error)
