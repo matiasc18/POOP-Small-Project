@@ -12,6 +12,7 @@
     }
     else
     {
+        // fix search (i think we should ask for one parameter, but we'll see)
         $stmt = $conn->prepare("select FirstName, LastName, Phone, Email from Contacts where (FirstName like ? or LastName like ? or Phone like ? or Email like ?");
         $searchVar = "%" . $inData["search"] . "%";
         $stmt->bind_param("ssss", $searchVar, $searchVar, $searchVar, $searchVar);
