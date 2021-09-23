@@ -5,6 +5,7 @@
     $lastName = $inData["LastName"];
     $username = $inData["Username"];
     $password = $inData["Password"];
+    $id = 0;
 
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if( $conn->connect_error )
@@ -15,10 +16,11 @@
     {
         $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES (?,?,?,?)");
         $stmt->bind_param("ssss", $firstName, $lastName, $username, $password);
-
-     
-        $stmt->close();
-        $conn->close();
+        $stmt->execute();
+		$stmt->close();
+		$conn->close();
+        returnWithError("");
+        
     }
     
     function getRequestInfo()
