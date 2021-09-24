@@ -110,19 +110,24 @@ function doSignup()
 	firstName = "";
 	lastName = "";
 	
-	var login = document.getElementById("login-name").value;
-	var password = document.getElementById("login-password").value;
+	var fName = document.getElementById("signup-firstname").value;
+	var lName = document.getElementById("signup-lastname").value;
+	var username = document.getElementById("signup-username").value;
+	var password = document.getElementById("signup-pass").value;
 //	var hash = md5( password );
 
-  console.log(login, password);
-	
-	document.getElementById("loginResult").innerHTML = "";
-
-	var tmp = {login:login,password:password};
+	var tmp = {
+		FirstName: fName,
+		LastName: lName,
+		Username: username,
+		Password: password
+	};
 //	var tmp = {login:login,password:hash};
 	var jsonPayload = JSON.stringify( tmp );
 	
-	var url = urlBase + '/Login.' + extension;
+	console.log(tmp);
+
+	var url = urlBase + '/CreateUser.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -133,28 +138,35 @@ function doSignup()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
+				console.log(this); // This
+				var check = 99;
 				var jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
+				
+				// userId = jsonObject.id;
 		
 				if( userId < 1 )
-				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+				{	
+					console.log("Signup failed");	
+					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
-		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
+				console.log(jsonObject);
+				console.log("Signup succeess");
 
-				saveCookie();
+				// firstName = jsonObject.firstName;
+				// lastName = jsonObject.lastName;
+
+				// saveCookie();
 	
-				window.location.href = "color.html";
+				// window.location.href = "contacts.html";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		// document.getElementById("loginResult").innerHTML = err.message;
+		console.log(err);
 	}
 
 }
