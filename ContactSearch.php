@@ -13,22 +13,23 @@
     else
     {
         // fix search (i think we should ask for one parameter, but we'll see)
-        $stmt = $conn->prepare("select FirstName, LastName, Phone, Email from Contacts where (FirstName like ? or LastName like ? or Phone like ? or Email like ?");
-        $searchVar = "%" . $inData["search"] . "%";
-        $stmt->bind_param("ssss", $searchVar, $searchVar, $searchVar, $searchVar);
-        $stmt->execute();
-        
-        $result = $stmt->get_result();
-        
-        while($row = $result->fetch_assoc())
-        {
-            if( $searchCount > 0 )
-            {
-                $searchResults .= ",";
-            }
-            $searchCount++;
-            $searchResults .= '["' . $row["FirstName"] . '", "' . $row["LastName"] . '", "' . $row["Phone"] . '", "' . $row["Email"] . '"]';
-        }
+       $stmt = $conn->prepare("select ID, FirstName, LastName, Phone, Email from Contacts where (FirstName like ? or LastName like ? or Phone like ? or Email like ?) and UserID=?");
+		$searchVar = "%" . $inData["search"] . "%";
+		$stmt->bind_param("sssss", $searchVar, $searchVar, $searchVar, $searchVar, $inData["userId"]);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		while($row = $result->fetch_assoc())
+		{
+			if( $searchCount > 0 )
+			{
+				$searchResults .= ",";
+			}
+			$searchCount++;
+			$searchResults .= '["' . $row["ID"] . '", "' . $row["FirstName"] . '", "' . $row["LastName"] . '", "' . $row["Phone"] . '", "' . $row["Email"] . '"]';
+		}
+
         
         if( $searchCount == 0 )
         {
