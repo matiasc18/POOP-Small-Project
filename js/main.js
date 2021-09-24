@@ -395,7 +395,7 @@ function searchContact()
 {
 	var srch = document.getElementById("search").value;
 
-	var tmp = {search:srch};
+	var tmp = {search:srch,userId:userId};
 	// var tmp = {search:srch,userId:userId};
 	var jsonPayload = JSON.stringify( tmp );
 
@@ -423,8 +423,12 @@ function searchContact()
 				// 		colorList += "<br />\r\n";
 				// 	}
 				// }
+				var contactList = "";
+				jsonObject.results.forEach(row => {
+					contactList += contactElement(row[0], row[1], row[2], row[4], row[3]);					
+				});
 				
-				// document.getElementsByTagName("p")[0].innerHTML = colorList;
+				document.getElementById("contact-list").innerHTML = contactList;
 			}
 		};
 		xhr.send(jsonPayload);
