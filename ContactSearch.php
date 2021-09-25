@@ -39,7 +39,7 @@
         }
         else
         {
-            returnWithInfo( $searchResults, $date );
+            returnWithInfo( $searchResults );
         }
         
         $stmt->close();
@@ -65,7 +65,7 @@
     
     function returnWithInfo( $searchResults )
     {
-        $retValue = '{"results":[' . $searchResults . '],"error":""}';
+        $retValue = '{"results":[' . $searchResults . '], "date":[' . $date . '], "error":""}';
         sendResultInfoAsJson( $retValue );
     }
     
