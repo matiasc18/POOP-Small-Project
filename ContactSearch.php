@@ -4,6 +4,8 @@
     
     $searchResults = "";
     $searchCount = 0;
+    $date = date('d-m-y h:i:s');
+
 
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error)
@@ -37,7 +39,7 @@
         }
         else
         {
-            returnWithInfo( $searchResults );
+            returnWithInfo( $searchResults, $date );
         }
         
         $stmt->close();
