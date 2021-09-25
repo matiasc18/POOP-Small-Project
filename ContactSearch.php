@@ -4,7 +4,7 @@
     
     $searchResults = "";
     $searchCount = 0;
-    $date = date('d-m-y h:i:s');
+    $date = date('d/m/y h:i:s');
 
 
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
