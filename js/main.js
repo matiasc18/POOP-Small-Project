@@ -144,12 +144,12 @@ function doSignup()
 				
 				// userId = jsonObject.id;
 		
-				if( userId < 1 )
-				{	
-					console.log("Signup failed");	
-					// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-					return;
-				}
+				// if( userId < 1 )
+				// {	
+				// 	console.log("Signup failed");	
+				// 	// document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+				// 	return;
+				// }
 				console.log(jsonObject);
 				console.log("Signup succeess");
 
