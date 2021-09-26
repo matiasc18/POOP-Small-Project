@@ -10,6 +10,8 @@
     // work on having the date added (do we want the user to enter or automatically enter it)
     // check to see if I have to initialize first
 
+    $id = 15;
+
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error)
     {
@@ -20,9 +22,18 @@
         $stmt = $conn->prepare("INSERT into Contacts (UserID,FirstName,LastName,Phone,Email) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssss", $userId, $firstName, $lastName, $phoneNumber, $email);
         $stmt->execute();
+
+        if( $contactId = mysqli_insert_id($conn) )
+		{
+			returnWithInfo( $contactId );
+		}
+		else
+		{
+			returnWithError("Insert failed");
+		}
+
         $stmt->close();
         $conn->close();
-        returnWithError("");
     }
 
     function getRequestInfo()
@@ -38,8 +49,15 @@
     
     function returnWithError( $err )
     {
-        $retValue = '{"Contact ID":['. $userId .'], "error":"' . $err . '"}';
+        $retValue = '{"id": 0, "error":"' . $err . '"}';
         sendResultInfoAsJson( $retValue );
     }
+
+    function returnWithInfo( $id )
+	{
+		$retValue = '{"id":' . $id . ',"error":""}';
+		sendResultInfoAsJson( $retValue );
+	}
+	
     
 ?>

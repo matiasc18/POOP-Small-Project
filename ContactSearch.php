@@ -15,7 +15,7 @@
     else
     {
         // fix search (i think we should ask for one parameter, but we'll see)
-       $stmt = $conn->prepare("select ID, FirstName, LastName, Phone, Email from Contacts where (FirstName like ? or LastName like ? or Phone like ? or Email like ?) and UserID=?");
+       $stmt = $conn->prepare("select * from Contacts where (FirstName like ? or LastName like ? or Phone like ? or Email like ?) and UserID=?");
 		$searchVar = "%" . $inData["search"] . "%";
 		$stmt->bind_param("sssss", $searchVar, $searchVar, $searchVar, $searchVar, $inData["userId"]);
 		$stmt->execute();
@@ -29,7 +29,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '["' . $row["ID"] . '", "' . $row["FirstName"] . '", "' . $row["LastName"] . '", "' . $row["Phone"] . '", "' . $row["Email"] . '"]';
+			$searchResults .= '["' . $row["ID"] . '", "' . $row["FirstName"] . '", "' . $row["LastName"] . '", "' . $row["Phone"] . '", "' . $row["DateCreated"] . '", "' . $row["Email"] . '"]';
 		}
 
         
@@ -65,7 +65,7 @@
     
     function returnWithInfo( $searchResults )
     {
-        $retValue = '{"results":[' . $searchResults . '], "date":[' . $date . '], "error":""}';
+        $retValue = '{"results":[' . $searchResults . '], "error":""}';
         sendResultInfoAsJson( $retValue );
     }
     
