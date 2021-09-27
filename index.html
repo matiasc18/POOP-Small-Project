@@ -7,29 +7,46 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="./css/style.css">
     </head>
-    <body>
-        <div class="col-lg-8 mx-auto p-3 py-md-5">
-          <header class="fs-4 pb-3 mb-3 border-bottom d-flex w-100 justify-content-between">
-            <h4>Personal Organizer Of People</h4>
-          </header>
+    <!-- <style>
+      h1 {
+        font-size: 48pt;
+      }
+      body {
+        background-color: rgb(91, 138, 224);
+      }
+      main {
+        background-color: white;
+        border-radius: 25px;
+      }
+    </style> -->
+    <body class="col-lg-6 mx-auto p-3 py-md-5">
+        <main id="home" class="row p-5 d-flex justify-content-evenly" >
+          <div class="col-md-6">
+            <h1>Personal</h1>
+            <h1>Organizer</h1>
+            <h1>Of</h1>
+            <h1>People</h1>
+          </div>
             
-            <main>
-                <div class="card col-md-8 mx-auto p-3">
-                    <form>
-                        <div class="mb-3">
-                            <label for="Login-username" class="form-label">Username</label>
-                            <input id="login-name" type="text" class="form-control" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="Login-password" class="form-label">Password</label>
-                            <input id="login-password" type="password" class="form-control">
-                        </div>
-                        <button id="login-button" type="button" class="btn btn-primary" onclick="doLogin();">Login</button>
-                        <button id="signup-button" type="button" class="btn btn-secondary end-0" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>
-                    </form>
-                </div>
+          
+            
+            
+          <div class="card col-md-4 mx-auto p-3">
+              <form>
+                  <div class="mb-3">
+                      <label for="Login-username" class="form-label">Username</label>
+                      <input id="login-name" type="text" class="form-control" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                      <label for="Login-password" class="form-label">Password</label>
+                      <input id="login-password" type="password" class="form-control">
+                  </div>
+                  <button id="login-button" type="button" class="btn btn-primary" onclick="doLogin();">Login</button>
+                  <button id="signup-button" type="button" class="btn btn-secondary end-0" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign up</button>
+              </form>
+          </div>
 
 
 
@@ -73,7 +90,7 @@
                   </div>
             </main>
 
-        </div>
+        
   
        
 

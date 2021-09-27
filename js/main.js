@@ -2,8 +2,7 @@
 
 // TODO: DISABLE BUTTONS UNTIL API RESPONSE
 
-// var urlBase = 'https://welovepoop.xyz/LAMPAPI'; //TODO: Change URL
-var urlBase = 'http://welovepoop.xyz/LAMPAPI'; //TODO: Change URL
+var urlBase = 'http://welovepoop.xyz/LAMPAPI';
 var extension = 'php';
 
 var userId = 0;
@@ -212,7 +211,7 @@ function readCookie()
 	else if (path == "/contacts.html")
 	{
 		if (userId >= 0) {
-			document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+			document.getElementById("userName").innerHTML = firstName + " " + lastName;
 		}
 		else {
 			window.location.href = "index.html";
