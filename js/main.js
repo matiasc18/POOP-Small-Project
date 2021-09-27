@@ -29,7 +29,6 @@ function contactElement(id, fName, lName, phone, date, email) {
   '<div class="d-flex w-100 justify-content-between">\n' +
   '<h5 class="contact-name mb-1">' + fName + ' ' + lName +'</h5>\n' +
   '<div class="btn-group" role="group" aria-label="button group">\n' +
-  '<p class="contact-date">' + date + '</p>\n' +
   '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit-modal"' +
     'onclick="selectForEdit(' + id + ')">Edit</button>\n' +
   '<button type="button" class="delete-contact btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#delete-modal"' +
@@ -38,6 +37,8 @@ function contactElement(id, fName, lName, phone, date, email) {
   '</div>\n' +
   '<p class="contact-phone mb-1">' + phone + '</p>\n' +
   '<p class="contact-email mb-1">' + email + '</p>\n' +
+	'<br/>' +
+	'<small class="text-muted">' + date + '</small>' +
   '</div>\n'
 
   return contact;
