@@ -50,18 +50,10 @@ function doLogin()
 	
 	var login = document.getElementById("login-name").value;
 	var password = document.getElementById("login-password").value;
-//	var hash = md5( password );
+	var hash = md5( password );
 
-  console.log(login, password);
-	
-	// userId = 99;
-	// firstName = "Bobby";
-	// lastName = "Tables";
-	// saveCookie();
-	// window.location.href = "contacts.html";
-
-	var tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
+	// var tmp = {login:login,password:password};
+	var tmp = {login:login,password:hash};
 	var jsonPayload = JSON.stringify( tmp );
 	
 	var url = urlBase + '/Login.' + extension;
@@ -114,13 +106,14 @@ function doSignup()
 	var lName = document.getElementById("signup-lastname").value;
 	var username = document.getElementById("signup-username").value;
 	var password = document.getElementById("signup-pass").value;
-//	var hash = md5( password );
+	var hash = md5( password );
 
 	var tmp = {
 		FirstName: fName,
 		LastName: lName,
 		Username: username,
-		Password: password
+		Password: hash
+		// Password: password
 	};
 //	var tmp = {login:login,password:hash};
 	var jsonPayload = JSON.stringify( tmp );
@@ -254,13 +247,6 @@ function addContact()
 	var jsonPayload = JSON.stringify( tmp );
 
   console.log(tmp);
-
-  // Add contact HTML. New contacts are added above existing ones
-  // TODO: put this after successful API call
-
-  // document.getElementById('contact-list').innerHTML = 
-  //   contactElement(99, newFirstname, newLastname, newEmail, newPhone) +
-  //   document.getElementById('contact-list').innerHTML;
 
   document.getElementById("add-form").reset();
 	var url = urlBase + '/ContactCreation.' + extension; //TODO: Edit later
