@@ -32,54 +32,34 @@
       </div>
     </div>
   </nav>
-  <div class="col-lg-8 mx-auto p-3 py-md-5">
-    <!-- <header class="fs-4 pb-3 mb-3 border-bottom d-flex w-100 justify-content-between">
-      <h4>Personal Organizer Of People</h4>
+  <main class="mx-auto col-md-8 py-5">
+    <div class="row mx-auto">
+      <div id="left" class="col-md-5">
 
-      <div class="d-flex">
-        <div class="btn-group btn-group-sm">
-          <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </svg>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" onclick="doLogout();">Sign out</a></li>
-          </ul>
-        </div>
-        <h4 id="userName">Test User</h4>
-      </div>
-    </header> -->
+        <div class="card p-3 py-md-5">
 
-    <main>
-      
-
-      <!-- Search bar -->
-      <div class="card col-md-8 mx-auto mb-5 p-3">
-        <form>
-          <div class="row">
-            <!-- <label for="Search" class="form-label fs-4 col-sm-2">Search</label> -->
-            <div class="col-10">
-              <input class="form-control" id="search">
-            </div>
-            <div class="col-sm-2">
-              <button type="button" class="btn btn-primary" onclick="searchContact();">Search</button>
-            </div>
+          <!-- Search bar -->
+          <form class="row mx-auto mb-5 p-3 border-bottom">
+              <div class="col-lg-8">
+                <input class="form-control" id="search" placeholder="search contacts">
+              </div>
+              <div class="col-lg-4">
+                <button type="button" class="btn btn-outline-primary" onclick="searchContact();">Search</button>
+              </div>
+          </form>
+    
+                  <!-- Add contact -->
+          <div class="d-grid gap-2 pb-3">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal">+ Add
+              contact</button>
           </div>
 
-        </form>
-      </div>
-
-      <div id="panel" class="col-md-8 mx-auto p-3">
-        <!-- Add contact -->
-        <div class="col-md-8 mx-auto pb-3">
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addModal">+ Add
-            contact</button>
         </div>
-
-
-        <!-- contacts list -->
+    
+      </div>
+    
+      <div id="right" class="col-md-7 mx-auto p-3">
+              <!-- contacts list -->
         <div id="contact-list" class="list-group col-md-8 mx-auto overflow-auto">
           <!-- ----sample HTML for a contact----- -->
           <!-- should be deleted or commented out -->    
@@ -100,11 +80,16 @@
             <small class=" text-muted">
               Added: 11-11-11
             </small>
-          </div> -->
+          </div>
+         -->
           <!-- end sample -->
 
         </div>
+
       </div>
+
+    </div>
+   
 
 
 
@@ -210,8 +195,9 @@
       </div>
 
 
-    </main>
-  </div>
+ 
+  </main>
+  
 
 
 

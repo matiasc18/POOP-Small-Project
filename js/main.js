@@ -12,8 +12,6 @@ var lastName = "";
 var idSelection = -1;
 
 
-// document.querySelector('.delete-contact').addEventListener('click', deleteSelect);
-
 readCookie()
 
 // contact element to be inserted, as a string
