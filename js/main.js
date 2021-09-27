@@ -18,7 +18,7 @@ var idSelection = -1;
 readCookie()
 
 // contact element to be inserted, as a string
-function contactElement(id, fName, lName, email, phone) {
+function contactElement(id, fName, lName, phone, date, email) {
   
   contact = '<div id="' + id + '" class="contact-item list-group-item" ' + 
     'data-id="' + id + '" ' + 
@@ -27,8 +27,9 @@ function contactElement(id, fName, lName, email, phone) {
     'data-email="' + email + '" ' +
     'data-phone="' + phone + '">\n' +
   '<div class="d-flex w-100 justify-content-between">\n' +
-  '<h5 class="mb-1">' + fName + ' ' + lName +'</h5>\n' +
+  '<h5 class="contact-name mb-1">' + fName + ' ' + lName +'</h5>\n' +
   '<div class="btn-group" role="group" aria-label="button group">\n' +
+  '<p class="contact-date">' + date + '</p>\n' +
   '<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit-modal"' +
     'onclick="selectForEdit(' + id + ')">Edit</button>\n' +
   '<button type="button" class="delete-contact btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#delete-modal"' +
@@ -260,9 +261,22 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				// document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				var jsonObject = JSON.parse( xhr.responseText );
+				console.log(jsonObject);
+				var contactId = jsonObject.id;
+
+				var date = new Date();
+				var d = date.getDate();
+				var m = date.getMonth() + 1;
+				var y = date.getFullYear();
+
+				if (d < 10) d = '0' + d;
+				if (m < 10) m = '0' + m;
+
+				date = d+'-'+m+'-'+y;
+
 				document.getElementById('contact-list').innerHTML = 
-					contactElement(99, newFirstname, newLastname, newEmail, newPhone) +
+					contactElement(contactId, newFirstname, newLastname, newPhone, date, newEmail) +
 					document.getElementById('contact-list').innerHTML;
 			}
 		};
@@ -323,7 +337,17 @@ function editContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				// document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				el = document.getElementById(idSelection);
+				el.setAttribute("data-firstname", newFirstname);
+				el.setAttribute("data-lastname", newLastname); 
+				el.setAttribute("data-email", newEmail); 
+				el.setAttribute("data-phone", newPhone);
+			
+				el.querySelector(".contact-name").innerHTML = newFirstname + " " + newLastname;
+				el.querySelector(".contact-email").innerHTML = newEmail;
+				el.querySelector(".contact-phone").innerHTML = newPhone;
+
+
 			}
 		};
 		xhr.send(jsonPayload);
@@ -396,22 +420,18 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				// document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 
-				console.log(jsonObject);
-				
-				// for( var i=0; i<jsonObject.results.length; i++ )
-				// {
-				// 	colorList += jsonObject.results[i];
-				// 	if( i < jsonObject.results.length - 1 )
-				// 	{
-				// 		colorList += "<br />\r\n";
-				// 	}
-				// }
 				var contactList = "";
+
 				jsonObject.results.forEach(row => {
-					contactList += contactElement(row[0], row[1], row[2], row[4], row[3]);					
+					var date = row[4];
+					var d = date.substring(8, 10);
+					var m = date.substring(5, 7);
+					var y = date.substring(0, 4);
+					date = d+'-'+m+'-'+y;
+
+					contactList += contactElement(row[0], row[1], row[2], row[3], date, row[5]);					
 				});
 				
 				document.getElementById("contact-list").innerHTML = contactList;
